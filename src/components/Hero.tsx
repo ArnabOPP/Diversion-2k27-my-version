@@ -17,10 +17,6 @@ export default function Hero() {
         <img className="hero__chars" src={asset('boygirl.png')} alt="" />
 
         <div className="hero__scroll">
-          <svg width="26" height="40" viewBox="0 0 26 40" fill="none" aria-hidden>
-            <rect x="1.5" y="1.5" width="23" height="37" rx="11.5" stroke="currentColor" strokeWidth="2" />
-            <line x1="13" y1="9" x2="13" y2="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          </svg>
           <span>Scroll Down</span>
         </div>
       </div>

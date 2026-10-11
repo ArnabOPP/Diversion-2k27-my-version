@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Lightbox } from './About'
 import './Schedule.css'
 
@@ -38,10 +38,49 @@ const FILES = [
   'hero bg.png',
 ]
 
+// Cards with their own, final image (by card number). The rest cycle through FILES as placeholders.
+// `caption` is optional text laid over the bottom-left corner of the card (`scale` shrinks it for long titles).
+const OWN_IMAGES: Record<number, { file: string; alt: string; caption?: { title: string; sub: string; scale?: number } }> = {
+  1: {
+    file: 'Untitled design (46).png',
+    alt: 'Three participants working together on a laptop',
+    caption: { title: 'Check In', sub: 'TBD' },
+  },
+  2: {
+    file: 'Untitled design (47).png',
+    alt: 'Three students at a podium with a laptop',
+    caption: { title: 'Opening Ceremony', sub: 'TBD', scale: 0.78 }, // long title on a small card, so a bit smaller
+  },
+  3: {
+    file: 'Untitled design (48).png',
+    alt: 'Participants typing at their laptops during the hackathon',
+    caption: { title: 'Hacking Time', sub: 'TBD' },
+  },
+  4: {
+    file: 'Untitled design (49).png',
+    alt: 'Participants focused on their screens in a computer lab',
+    caption: { title: 'Building Begins', sub: 'TBD' },
+  },
+  5: {
+    file: 'Untitled design (50).png',
+    alt: 'A speaker raising a hand at the microphone on stage',
+    caption: { title: 'Speaker Session', sub: 'TBD' },
+  },
+}
+
 const GALLERY_GAP = 13 // space (vh) between the last gap-less group and the next, and before the end
 
 const { PHOTOS, GALLERY_VH } = (() => {
-  const photos: { num: number; file: string; alt: string; x: number; y: number; w: number; h: number }[] = []
+  const photos: {
+    num: number
+    file: string
+    alt: string
+    caption?: { title: string; sub: string; scale?: number }
+    x: number
+    y: number
+    w: number
+    h: number
+  }[] = []
   let x = -36 // the first card starts left of the gallery origin, so a sliver of it shows at the screen's right edge
   SEQUENCE.forEach((name) => {
     const group = GROUPS[name]
@@ -49,8 +88,9 @@ const { PHOTOS, GALLERY_VH } = (() => {
       const num = photos.length + 1
       photos.push({
         num,
-        file: FILES[(num - 1) % FILES.length],
-        alt: `Placeholder photo ${num}`,
+        file: OWN_IMAGES[num]?.file ?? FILES[(num - 1) % FILES.length],
+        alt: OWN_IMAGES[num]?.alt ?? `Placeholder photo ${num}`,
+        caption: OWN_IMAGES[num]?.caption,
         x: x + tile.dx,
         y: tile.y,
         w: tile.w,
@@ -88,6 +128,7 @@ const COPY = {
     subtitle: 'TWO DAYS, ONE CAMPUS, ENDLESS IDEAS.',
     body: 'Placeholder text for the Diversion 2K27 schedule. The opening ceremony, hacking hours, mentor rounds, demos and the closing ceremony will be listed here, hour by hour, so every team knows exactly what is coming next.',
     brand: ['VISIT', 'DIVERSION'],
+    photo: { file: 'Untitled design (45).png', alt: 'Metcalfe Hall in Kolkata' },
     backTo: 'visit',
   },
   contact: {
@@ -96,6 +137,7 @@ const COPY = {
     subtitle: 'WE WOULD LOVE TO HEAR FROM YOU.',
     body: 'Questions, ideas or want to partner with us? Reach out through any of the channels that follow and the team will get back to you.',
     brand: ['CONTACT', 'DIVERSION'],
+    photo: { file: 'Scroll Down (15).png', alt: 'Placeholder postcard' },
     backTo: 'faq',
   },
 }
@@ -177,7 +219,7 @@ export default function Schedule({ id = 'schedule', variant = 'schedule' }: Sche
       ref={sectionRef}
       id={id}
       className={`schedule${contact ? ' schedule--contact' : ''}`}
-      style={{ height: `calc(100vh + (12vw + ${galleryVh}vh) / ${SPEED})` }}
+      style={{ height: `calc(100vh + (var(--lead) + ${galleryVh} * var(--u)) / ${SPEED})` }}
     >
       <div className="schedule__stage">
         <button className="schedule__back" type="button" onClick={goBack}>
@@ -187,10 +229,10 @@ export default function Schedule({ id = 'schedule', variant = 'schedule' }: Sche
           Back
         </button>
 
-        <div ref={trackRef} className="schedule__track" style={{ width: `calc(112vw + ${galleryVh}vh)` }}>
+        <div ref={trackRef} className="schedule__track" style={{ width: `calc(100vw + var(--lead) + ${galleryVh} * var(--u))` }}>
           <div className="schedule__intro">
             <figure className="schedule__card">
-              <img src={asset('Scroll Down (15).png')} alt="Placeholder postcard" />
+              <img src={asset(copy.photo.file)} alt={copy.photo.alt} />
               <p className="schedule__script">{copy.script}</p>
               <div className="schedule__brand">
                 <span>{copy.brand[0]}</span>
@@ -215,12 +257,14 @@ export default function Schedule({ id = 'schedule', variant = 'schedule' }: Sche
                   <div
                     key={c.kind}
                     className="schedule__contact"
-                    style={{
-                      left: `${CONTACT_START + i * (CONTACT_W + CONTACT_GAP)}vh`,
-                      top: '18%',
-                      width: `${CONTACT_W}vh`,
-                      height: `${CONTACT_H}vh`,
-                    }}
+                    style={
+                      {
+                        '--x': CONTACT_START + i * (CONTACT_W + CONTACT_GAP),
+                        '--y': 18,
+                        '--w': CONTACT_W,
+                        '--h': CONTACT_H,
+                      } as CSSProperties
+                    }
                   >
                     <span className="schedule__num" aria-hidden="true">
                       {String(i + 1).padStart(2, '0')}
@@ -239,13 +283,19 @@ export default function Schedule({ id = 'schedule', variant = 'schedule' }: Sche
                   <div
                     key={p.file}
                     className="schedule__photo"
-                    style={{ left: `${p.x}vh`, top: `${p.y}%`, width: `${p.w}vh`, height: `${p.h}vh` }}
+                    style={{ '--x': p.x, '--y': p.y, '--w': p.w, '--h': p.h } as CSSProperties}
                     onClick={() => setLightbox({ src: asset(p.file), alt: p.alt })}
                   >
                     <img src={asset(p.file)} alt={p.alt} />
                     <span className="schedule__num" aria-hidden="true">
                       {String(p.num).padStart(2, '0')}
                     </span>
+                    {p.caption && (
+                      <div className="schedule__caption" style={{ '--cap': p.caption.scale ?? 1 } as CSSProperties}>
+                        <strong>{p.caption.title}</strong>
+                        <span>{p.caption.sub}</span>
+                      </div>
+                    )}
                     <button className="schedule__open" type="button" aria-label={`Open photo: ${p.alt}`}>
                       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
                         <path

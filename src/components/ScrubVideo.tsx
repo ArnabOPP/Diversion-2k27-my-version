@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './ScrubVideo.css'
 
 const SMOOTHING = 0.12 // 0-1: how quickly the video catches up with the scroll position
@@ -18,6 +18,25 @@ export default function ScrubVideo({ src }: Props) {
   const sectionRef = useRef<HTMLElement>(null)
   const stageRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
+  // On phones the (large) videos only start loading when the section is within a couple of screens of the
+  // viewport, to save mobile data. Everywhere else they load straight away, as before.
+  const [near, setNear] = useState(() => !window.matchMedia('(max-width: 800px)').matches)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (near || !section) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setNear(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '200% 0px' },
+    )
+    observer.observe(section)
+    return () => observer.disconnect()
+  }, [near])
 
   useEffect(() => {
     const section = sectionRef.current
@@ -59,7 +78,7 @@ export default function ScrubVideo({ src }: Props) {
           src={src}
           muted
           playsInline
-          preload="auto"
+          preload={near ? 'auto' : 'metadata'}
           disablePictureInPicture
           tabIndex={-1}
         />

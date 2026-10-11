@@ -3,6 +3,8 @@
 /* Tall section: scrolling down slides a wide track sideways while the stage stays pinned.
    The height and track width are set in Schedule.tsx from the number of cards. */
 .schedule {
+  --u: 1vh; /* one "unit" of the gallery layout; the mobile styles make it smaller */
+  --lead: 12vw; /* empty space between the intro screen and the gallery */
   position: relative;
   z-index: 4; /* slides over the video before it */
   margin-top: -80vh;
@@ -138,7 +140,15 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 112vw;
+  left: calc(100vw + var(--lead));
+}
+
+.schedule__photo,
+.schedule__contact {
+  left: calc(var(--x) * var(--u));
+  top: calc(var(--y) * 1%);
+  width: calc(var(--w) * var(--u));
+  height: calc(var(--h) * var(--u));
 }
 
 .schedule__photo {
@@ -174,6 +184,32 @@
 }
 
 .schedule__photo:hover .schedule__num {
+  color: #fdd7b0;
+}
+
+.schedule__caption {
+  position: absolute;
+  left: 1.1rem;
+  bottom: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  color: #fff;
+  font-family: 'Poppins', system-ui, sans-serif;
+  line-height: 1.1;
+  text-shadow: 0 1px 10px rgb(0 0 0 / 0.7), 0 0 2px rgb(0 0 0 / 0.5);
+  pointer-events: none;
+}
+
+.schedule__caption strong {
+  font-weight: 700;
+  font-size: calc(clamp(1.1rem, 3.4vh, 2.1rem) * var(--cap, 1));
+}
+
+.schedule__caption span {
+  font-weight: 600;
+  font-size: calc(clamp(0.85rem, 2.2vh, 1.3rem) * var(--cap, 1));
+  letter-spacing: 0.04em;
   color: #fdd7b0;
 }
 

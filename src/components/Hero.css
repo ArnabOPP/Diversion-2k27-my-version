@@ -59,7 +59,14 @@
   left: 24%;
   top: 40%;
   font-size: 8.4vw;
-  color: #151515;
+  color: #ffb4d6; /* fallback where gradient text is unsupported */
+  /* a light lavender-to-pink-to-peach gradient: reads clearly on the night sky and stays distinct from the white lines */
+  background: linear-gradient(95deg, #c9b8ff 0%, #ff9fd0 55%, #ffc58a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none; /* a text shadow would show through the transparent letters */
+  filter: drop-shadow(0 0.25vw 0.9vw rgb(10 6 30 / 0.55));
 }
 
 .hero__line--diversion {
@@ -93,6 +100,8 @@
   align-items: center;
   gap: 0.5rem;
   color: #fff;
+  opacity: 0.6; /* a quiet hint, not a headline */
   font-family: system-ui, sans-serif;
   font-size: clamp(0.8rem, 1.1vw, 1rem);
+  letter-spacing: 0.04em;
 }

@@ -1,0 +1,171 @@
+/* Mobile version. Everything here lives inside a max-width media query, so the desktop layout is untouched.
+   Imported last in main.tsx so it wins over the component styles. */
+
+@media (max-width: 800px) {
+  /* Nothing may widen the page: a phone browser would otherwise zoom out to fit the overflowing content.
+     `clip` (not `hidden`) so the page keeps working with position: sticky. */
+  html,
+  body {
+    overflow-x: clip;
+  }
+}
+
+@media (max-width: 800px) {
+  /* ---------- Loader ---------- */
+  .start__logo {
+    width: min(58vw, 260px);
+  }
+
+  /* ---------- Header: logo and menu button ---------- */
+  .site-header__logo {
+    left: 4%;
+    top: 2.4%;
+    width: 31vw;
+  }
+
+  .site-header__menu {
+    right: 5%;
+    top: 3.2%;
+    width: 9vw;
+    min-width: 32px;
+    gap: 6px;
+    filter: drop-shadow(0 1px 3px rgb(0 0 0 / 0.35)); /* stays readable over the bright sky */
+  }
+
+  .site-header__menu span {
+    height: 4px;
+  }
+
+  /* ---------- Hero: headline on top, the two characters (full width) underneath ---------- */
+  .hero__line {
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .hero__line--kolkata {
+    top: 11%;
+    font-size: 21vw;
+  }
+
+  .hero__line--ready {
+    top: 23.5%;
+    font-size: 12.5vw;
+  }
+
+  .hero__line--diversion {
+    top: 30%;
+    font-size: 17.5vw;
+  }
+
+  .hero__chars {
+    left: 50%;
+    width: 120vw;
+    height: auto;
+    max-width: none;
+  }
+}
+
+@media (max-width: 800px) {
+  /* ---------- Schedule / contact: horizontal gallery ---------- */
+  /* the gallery layout is measured in "units" (1vh on desktop); phones are tall and narrow, so use a smaller unit */
+  .schedule {
+    --u: 0.55vh;
+    --lead: 40vw; /* more room, so the first photos do not sit on top of the intro text */
+  }
+
+  .schedule--contact {
+    --u: 0.7vh;
+  }
+
+  /* intro screen: card on top, text underneath (instead of side by side) */
+  .schedule__card {
+    left: 8vw;
+    top: 24%;
+    width: 84vw;
+    padding: 2vw;
+    transform: rotate(-3deg);
+  }
+
+  .schedule__text {
+    left: 8vw;
+    top: 56%;
+    width: 84vw;
+    transform: none;
+  }
+
+  .schedule__text h2 {
+    font-size: 3rem;
+  }
+
+  .schedule__back {
+    top: 5.6rem;
+    padding: 0.6em 1.2em;
+    font-size: 0.9rem;
+  }
+
+  /* ---------- Cards (City of Joy / Hacker's Guide / Team / Prizes) ---------- */
+  .visit__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.1rem;
+  }
+
+  .visit__blurb {
+    max-width: none;
+  }
+
+  .visit__button {
+    font-size: 0.8rem;
+  }
+
+  /* ---------- Partners ---------- */
+  /* the long tagline may wrap here (on desktop it stays on one line) */
+  .partners .about__tagline {
+    white-space: normal;
+  }
+
+  /* the tier rows set their column count inline; fewer, bigger boxes fit a phone */
+  .partners__tier--gold .partners__grid,
+  .partners__tier--silver .partners__grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* ---------- Closing screen and footer ---------- */
+  .coming__text {
+    font-size: 10.5vw;
+  }
+
+  .coming__logo {
+    width: 30vw;
+  }
+
+  .footer__legal p {
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 800px) {
+  /* the button sits at the bottom right of the photo, clear of the lettering at the bottom left */
+  .visit__button {
+    left: auto;
+    right: clamp(14px, 4vw, 24px);
+    transform: none;
+    white-space: nowrap;
+    padding: 0.6em 1.1em;
+    font-size: 0.72rem;
+  }
+
+  .visit__button:hover {
+    transform: scale(1.04);
+  }
+}
+
+@media (max-width: 800px) {
+  /* ---------- Menu: bigger touch targets ---------- */
+  .menu__list a {
+    padding: 0.15rem 0;
+    font-size: 2.1rem;
+    line-height: 1.4;
+  }
+}
