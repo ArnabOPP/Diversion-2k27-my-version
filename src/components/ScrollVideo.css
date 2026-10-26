@@ -2,7 +2,7 @@
    Height = 1 viewport (pinned) + 0.8 (cross-fade) + 4 (video scrub) + 1 (next section slides over) */
 .scroll-video {
   position: relative;
-  height: 680vh;
+  height: 560vh;
   background: #000;
 }
 

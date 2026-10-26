@@ -29,9 +29,8 @@ export default function Header() {
       <div className={`site-header__partners${menuOpen ? ' is-hidden' : ''}`}>
         <img src={asset('iem-logo.png')} alt="IEM" />
         <img src={asset('uem-logo.png')} alt="UEM" />
+        <img className="site-header__acm" src={asset('acm-logo.png')} alt="ACM" />
       </div>
-
-      <img className={`site-header__acm${menuOpen ? ' is-hidden' : ''}`} src={asset('acm-logo.png')} alt="ACM" />
 
       <button className={`site-header__menu${menuOpen ? ' is-hidden' : ''}`} type="button" aria-label="Open menu" onClick={() => setMenuOpen(true)}>
         <span />

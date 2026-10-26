@@ -45,10 +45,8 @@
     height: 7vw;
   }
 
-  .site-header__acm {
-    right: calc(5% + 9vw + 3vw);
-    top: calc(3.2% + 2.9vw);
-    height: 9vw;
+  .site-header__partners .site-header__acm {
+    height: 7.2vw;
   }
 
   .site-header__menu {

@@ -1,10 +1,10 @@
 /* Tall section: the video stays pinned while scrolling through it.
-   Height = 1 viewport (pinned) + 1 (top edge fades in) + 4 (playback).
+   Height = 1 viewport (pinned) + 1 (top edge fades in) + 3 (playback).
    It overlaps the empty dark space at the bottom of the previous section, so the video emerges out of it. */
 .scrub-video {
   position: relative;
   z-index: 3; /* above the About photos, which drift with parallax */
-  height: 600vh;
+  height: 480vh;
   margin-top: -100vh; /* overlaps the empty dark space at the bottom of About (its padding-bottom is 100vh) */
   pointer-events: none; /* the not-yet-opaque top must not block clicks on the section underneath */
   /* Mask is fixed to the section while the pinned video moves down through it, so the video's upper

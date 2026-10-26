@@ -103,6 +103,12 @@ const { PHOTOS, GALLERY_VH } = (() => {
   return { PHOTOS: photos, GALLERY_VH: x - GALLERY_GAP }
 })()
 
+// The schedule is not announced yet: its cards are kept in the code but not shown, and "TBA" is written instead
+const HIDE_SCHEDULE_CARDS = true
+
+const TBA_LEN = 28 // vw of scroll after the intro while "TBA" is shown (its box is 20vw wide, so it stops at 72-92vw: near the right edge, beside the intro text)
+const TBA_LEAD = '-2vw' // gap between the intro text and the word
+
 const SMOOTHING = 0.12 // 0-1: how quickly the gallery catches up with the scroll position
 const SPEED = 1.5 // sideways pixels moved per pixel of vertical scroll (1 = same speed; higher = shorter scroll)
 
@@ -183,6 +189,9 @@ export default function Schedule({ id = 'schedule', variant = 'schedule' }: Sche
   const contact = variant === 'contact'
   const copy = COPY[variant]
   const galleryVh = contact ? CONTACT_GALLERY_VH : GALLERY_VH
+  const tba = !contact && HIDE_SCHEDULE_CARDS
+  // length of the gallery: normally set by its cards; with "TBA" it is just the word's box, sized so it ends up centred
+  const galleryLen = tba ? `(${TBA_LEN}vw)` : `(${galleryVh} * var(--u))`
   const sectionRef = useRef<HTMLElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null)
@@ -193,7 +202,7 @@ export default function Schedule({ id = 'schedule', variant = 'schedule' }: Sche
     const track = trackRef.current
     if (!section || !track) return
 
-    const movers = track.querySelectorAll<HTMLElement>('.schedule__intro, .schedule__photo, .schedule__contact')
+    const movers = track.querySelectorAll<HTMLElement>('.schedule__intro, .schedule__photo, .schedule__contact, .schedule__tba')
     let current: number | null = null
     let frame = 0
 
@@ -219,7 +228,7 @@ export default function Schedule({ id = 'schedule', variant = 'schedule' }: Sche
       ref={sectionRef}
       id={id}
       className={`schedule${contact ? ' schedule--contact' : ''}`}
-      style={{ height: `calc(100vh + (var(--lead) + ${galleryVh} * var(--u)) / ${SPEED})` }}
+      style={{ ...(tba ? ({ '--lead': TBA_LEAD } as CSSProperties) : {}), height: `calc(100vh + (var(--lead) + ${galleryLen}) / ${SPEED})` }}
     >
       <div className="schedule__stage">
         <button className="schedule__back" type="button" onClick={goBack}>
@@ -229,7 +238,7 @@ export default function Schedule({ id = 'schedule', variant = 'schedule' }: Sche
           Back
         </button>
 
-        <div ref={trackRef} className="schedule__track" style={{ width: `calc(100vw + var(--lead) + ${galleryVh} * var(--u))` }}>
+        <div ref={trackRef} className="schedule__track" style={{ width: `calc(100vw + var(--lead) + ${galleryLen})` }}>
           <div className="schedule__intro">
             <figure className="schedule__card">
               <img src={asset(copy.photo.file)} alt={copy.photo.alt} />
@@ -252,6 +261,7 @@ export default function Schedule({ id = 'schedule', variant = 'schedule' }: Sche
           </div>
 
           <div className="schedule__gallery">
+            {tba && <span className="schedule__tba">TBA</span>}
             {contact
               ? CONTACTS.map((c, i) => (
                   <div
@@ -279,7 +289,7 @@ export default function Schedule({ id = 'schedule', variant = 'schedule' }: Sche
                     </div>
                   </div>
                 ))
-              : PHOTOS.map((p) => (
+              : (tba ? [] : PHOTOS).map((p) => (
                   <div
                     key={p.file}
                     className="schedule__photo"
