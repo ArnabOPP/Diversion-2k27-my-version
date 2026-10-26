@@ -41,6 +41,11 @@
 }
 
 /* The last section of the page: no room left for a video below */
+/* Follows another card: the same navy all the way, no fade from a darker colour */
+.visit--flat {
+  background: #21264d;
+}
+
 .visit--end {
   padding-bottom: 12vh;
 }
@@ -88,7 +93,8 @@
 }
 
 /* The hacker's guide header has a long first line, so its mark sits higher */
-.visit--last .visit__logo img {
+.visit--last .visit__logo img,
+.visit--guide .visit__logo img {
   top: -1.3em;
 }
 
@@ -160,7 +166,8 @@
 }
 
 /* Hacker's guide card: the mark sits above the first line at the right end, like its header */
-.visit--last .visit__brand img {
+.visit--last .visit__brand img,
+.visit--guide .visit__brand img {
   bottom: auto;
   top: -1.3em;
   right: 0.4em;

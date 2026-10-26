@@ -12,11 +12,12 @@ const COMMUNITY_BOXES = 16 // 4 x 4
 
 interface PartnersProps {
   id?: string
+  fromPurple?: boolean // it follows the purple schedule section: sit directly under it and fade from its colour
 }
 
-export default function Partners({ id = 'partners' }: PartnersProps) {
+export default function Partners({ id = 'partners', fromPurple = false }: PartnersProps) {
   return (
-    <section id={id} className="about about--last about--hall partners">
+    <section id={id} className={`about about--last about--hall partners${fromPurple ? ' about--flush about--from-purple' : ''}`}>
       <div className="about__hall">
         <h2 className="about__title">OUR PARTNERS</h2>
         <h3 className="about__tagline">Backed by the best in the business, powering every idea.</h3>

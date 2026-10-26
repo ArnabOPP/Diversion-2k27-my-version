@@ -6,11 +6,14 @@ const ITEMS: { label: string; target: string | null }[] = [
   { label: 'Home', target: null },
   { label: 'About', target: 'about' },
   { label: 'Venue', target: 'about-2' },
+  { label: "Hacker's Guide", target: 'visit-2' },
+  { label: 'Achievements', target: 'about-3' },
+  { label: 'Prizes', target: 'prizes' },
+  { label: 'Organizers', target: 'visit-3' },
   { label: 'Schedule', target: 'schedule' },
   { label: 'Partners', target: 'about-4' },
-  { label: 'Prizes', target: 'visit-4' },
-  { label: 'FAQ', target: 'faq' },
   { label: 'Contact', target: 'contact' },
+  { label: 'FAQ', target: 'faq' },
 ]
 
 // The option for the section the visitor is currently in: of the sections whose top is above the middle of the

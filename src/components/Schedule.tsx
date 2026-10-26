@@ -129,7 +129,7 @@ const COPY = {
     body: 'Placeholder text for the Diversion 2K27 schedule. The opening ceremony, hacking hours, mentor rounds, demos and the closing ceremony will be listed here, hour by hour, so every team knows exactly what is coming next.',
     brand: ['VISIT', 'DIVERSION'],
     photo: { file: 'Untitled design (45).png', alt: 'Metcalfe Hall in Kolkata' },
-    backTo: 'visit',
+    backTo: 'visit-3', // the organizers card, which comes just before the schedule
   },
   contact: {
     script: 'Say Hello',
@@ -138,7 +138,7 @@ const COPY = {
     body: 'Questions, ideas or want to partner with us? Reach out through any of the channels that follow and the team will get back to you.',
     brand: ['CONTACT', 'DIVERSION'],
     photo: { file: 'Scroll Down (15).png', alt: 'Placeholder postcard' },
-    backTo: 'faq',
+    backTo: 'about-4', // the partners section, which comes just before the contact section
   },
 }
 

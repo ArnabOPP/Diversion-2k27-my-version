@@ -37,10 +37,45 @@
   background: #fff;
 }
 
+/* IEM and UEM sit beside the Diversion logo; ACM sits beside the menu button */
+.site-header__partners {
+  position: fixed;
+  z-index: 50;
+  left: calc(4.7% + 13.8vw + 2vw);
+  top: 6%;
+  height: 4.65vw; /* same height as the Diversion logo */
+  display: flex;
+  align-items: center;
+  gap: 1.4vw;
+}
+
+.site-header__partners img {
+  height: 3.6vw;
+  width: auto;
+}
+
+.site-header__acm {
+  position: fixed;
+  z-index: 50;
+  right: calc(3.6% + 3.1vw + 1.8vw);
+  top: calc(4.2% + 1.45vw); /* level with the middle of the menu bars */
+  height: 4.2vw;
+  width: auto;
+  transform: translateY(-50%);
+}
+
 /* Fade the header away while the menu is open so it doesn't show through the menu's fade-in */
 .site-header__logo,
+.site-header__partners,
+.site-header__acm,
 .site-header__menu {
   transition: opacity 0.3s ease;
+}
+
+/* the hero-only logos also fade with the scroll (--hero-fade is set from Header.tsx) */
+.site-header__partners,
+.site-header__acm {
+  opacity: var(--hero-fade, 1);
 }
 
 .is-hidden {

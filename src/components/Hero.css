@@ -59,14 +59,14 @@
   left: 24%;
   top: 40%;
   font-size: 8.4vw;
-  color: #ffb4d6; /* fallback where gradient text is unsupported */
-  /* a light lavender-to-pink-to-peach gradient: reads clearly on the night sky and stays distinct from the white lines */
-  background: linear-gradient(95deg, #c9b8ff 0%, #ff9fd0 55%, #ffc58a 100%);
+  color: #2b2150; /* fallback where gradient text is unsupported */
+  /* a dark indigo-to-plum gradient: reads clearly on the bright sunset sky and stays distinct from the white lines */
+  background: linear-gradient(95deg, #1c1540 0%, #34286a 50%, #582b78 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: none; /* a text shadow would show through the transparent letters */
-  filter: drop-shadow(0 0.25vw 0.9vw rgb(10 6 30 / 0.55));
+  filter: drop-shadow(0 0.25vw 0.9vw rgb(30 10 60 / 0.35));
 }
 
 .hero__line--diversion {
@@ -86,22 +86,55 @@
   transform: translateX(-50%);
 }
 
-.hero__scroll {
-  z-index: 4;
-}
-
-.hero__scroll {
+.hero__coming {
   position: absolute;
-  left: 50%;
-  bottom: 2.5%;
-  transform: translateX(-50%);
+  left: 4.7%;
+  bottom: 6%;
+  z-index: 4;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
+  font: 700 clamp(1rem, 1.9vw, 1.9rem) / 1.15 'Poppins', system-ui, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* "COMING" takes the same dark gradient as "GET READY FOR"; the line under it stays white */
+.hero__coming-top {
+  color: #2b2150; /* fallback */
+  background: linear-gradient(95deg, #1c1540 0%, #34286a 50%, #582b78 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  align-self: flex-start;
+}
+
+.hero__coming--venue {
+  left: auto;
+  right: 4.7%;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.hero__coming--venue .hero__coming-top {
+  align-self: flex-end;
+  background: none;
+  -webkit-text-fill-color: #000; /* plain black instead of the gradient */
+  color: #000;
+}
+
+.hero__coming-sub {
   color: #fff;
-  opacity: 0.6; /* a quiet hint, not a headline */
-  font-family: system-ui, sans-serif;
-  font-size: clamp(0.8rem, 1.1vw, 1rem);
-  letter-spacing: 0.04em;
+  text-shadow: 0 2px 10px rgb(20 10 50 / 0.45);
+}
+
+.hero__apply {
+  z-index: 5;
+}
+
+.hero__apply {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  transform: translateX(-50%);
+  z-index: 5;
 }

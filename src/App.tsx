@@ -5,6 +5,7 @@ import Faq from '@/components/Faq'
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import Partners from '@/components/Partners'
+import Prizes from '@/components/Prizes'
 import Schedule from '@/components/Schedule'
 import ScrubVideo from '@/components/ScrubVideo'
 import Visit from '@/components/Visit'
@@ -57,24 +58,38 @@ export default function App() {
         <ScrollVideo>
           <Hero />
         </ScrollVideo>
+        {/* 2 About */}
         <About />
         <ScrubVideo src="/video%203%20scrub.mp4" />
+        {/* 3 Venue */}
         <About id="about-2" last />
-        <Visit />
-        <ScrubVideo src="/video%204%20scrub.mp4" />
-        <Schedule />
-        <Visit id="visit-2" after="schedule" videoNext />
+        {/* 4 Hacker's guide */}
+        <Visit id="visit-2" content="schedule" videoNext />
         <ScrubVideo src="/video%207%20scrub.mp4" />
+        {/* 5 Achievements */}
         <About id="about-3" last content="hall" />
+        <div className="video-gap video-gap--dark" aria-hidden="true" />
+        <ScrubVideo src="/video%208%20scrub.mp4" />
+        {/* 6 Prizes */}
+        <Prizes />
+        {/* 7 Organizers */}
         <Visit id="visit-3" content="team" videoNext />
         <ScrubVideo src="/video%205%20scrub.mp4" />
+        {/* 8 Schedule */}
+        <Schedule />
+        {/* 9 Community partners */}
+        <div className="video-gap" aria-hidden="true" />
+        <ScrubVideo src="/video%207%20scrub.mp4" />
         <Partners id="about-4" />
-        <Visit id="visit-4" content="prizes" videoNext />
-        <ScrubVideo src="/video%206%20scrub.mp4" />
-        <Faq id="faq" />
+        {/* 10 Contact */}
         <Schedule id="contact" variant="contact" />
         <div className="video-gap" aria-hidden="true" />
         <ScrubVideo src="/video%206%20scrub.mp4" />
+        {/* 11 FAQ */}
+        <Faq id="faq" />
+        <div className="video-gap video-gap--dark" aria-hidden="true" />
+        <ScrubVideo src="/video%204%20scrub.mp4" />
+        {/* 12 Closing screen and footer */}
         <Coming />
         <Header />
       </div>

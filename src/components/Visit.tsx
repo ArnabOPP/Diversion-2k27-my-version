@@ -48,17 +48,17 @@ const COPY = {
 
 interface VisitProps {
   id?: string
-  after?: 'about' | 'schedule' // what comes before it: sets its copy and how its top blends in
+  after?: 'about' | 'schedule' | 'visit' // what comes before it: how its top blends in (dark, purple, or the card's own navy)
   videoNext?: boolean // a scrub video follows: leave empty space below for it to emerge from
   end?: boolean // the last section of the page: normal space below instead of the room left for a video
-  content?: keyof typeof COPY // which text to show (defaults to the one matching `after`)
+  content?: keyof typeof COPY // which text to show
 }
 
-export default function Visit({ id = 'visit', after = 'about', videoNext = false, end = false, content }: VisitProps) {
-  const copy = COPY[content ?? after]
+export default function Visit({ id = 'visit', after = 'about', videoNext = false, end = false, content = 'about' }: VisitProps) {
+  const copy = COPY[content]
 
   return (
-    <section id={id} className={`visit${after === 'schedule' ? ' visit--last' : ''}${videoNext ? ' visit--video-next' : ''}${end ? ' visit--end' : ''}${content === 'team' ? ' visit--team' : ''}`}>
+    <section id={id} className={`visit${after === 'schedule' ? ' visit--last' : ''}${after === 'visit' ? ' visit--flat' : ''}${videoNext ? ' visit--video-next' : ''}${end ? ' visit--end' : ''}${content === 'team' ? ' visit--team' : ''}${content === 'schedule' ? ' visit--guide' : ''}`}>
       <div className="visit__content">
         <header className="visit__header">
           <div className="visit__logo" aria-label={`${copy.logoTop} ${copy.logoMain}`}>

@@ -1,0 +1,203 @@
+/* Prizes: a podium of the three main prizes, then a wide card for the track winners */
+.prizes__inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* the header sits in the middle, above the centred podium (the lock-up and blurb keep their own left-aligned text) */
+.prizes__header {
+  justify-content: center;
+  text-align: left;
+}
+
+.prizes__podium {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: clamp(1rem, 2.4vw, 1.8rem);
+  align-items: end;
+  margin: 3.5rem 0 1.8rem;
+  padding: 0;
+  list-style: none;
+}
+
+.prizes__card {
+  --tone: #f3c969;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 2.2rem 1.4rem 2.4rem;
+  border: 1px solid color-mix(in srgb, var(--tone) 45%, transparent);
+  border-radius: 10px;
+  background:
+    linear-gradient(to top, color-mix(in srgb, var(--tone) 16%, transparent), transparent 70%),
+    rgb(255 255 255 / 0.04);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.prizes__card:hover {
+  transform: translateY(-6px);
+  border-color: var(--tone);
+}
+
+/* the podium: second and third stand lower than first */
+.prizes__card--first {
+  --tone: #f3c969;
+  order: 2;
+  min-height: 25rem;
+}
+
+.prizes__card--second {
+  --tone: #cfd3de;
+  order: 1;
+  min-height: 21rem;
+}
+
+.prizes__card--third {
+  --tone: #e0a070;
+  order: 3;
+  min-height: 19rem;
+}
+
+.prizes__trophy {
+  width: clamp(4.2rem, 7vw, 6rem);
+  height: auto;
+  margin-bottom: 1.2rem;
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--tone) 55%, transparent));
+}
+
+/* the trophy pictures (cup inside a laurel wreath) are a bit wider than tall */
+.prizes__trophy--image {
+  width: clamp(5.4rem, 9vw, 7.8rem);
+  aspect-ratio: 1.2;
+  object-fit: contain;
+  margin-bottom: 0.8rem;
+}
+
+.prizes .prizes__card--first .prizes__trophy--image {
+  width: clamp(6.6rem, 11.5vw, 10rem); /* first place's trophy is the biggest */
+}
+
+/* first place's trophy is the biggest */
+.prizes__card--first .prizes__trophy {
+  width: clamp(5.2rem, 9vw, 7.6rem);
+}
+
+.prizes__rank {
+  font: 400 clamp(3.4rem, 7vw, 6rem) / 1 'Bebas Neue', Impact, sans-serif;
+  color: var(--tone);
+}
+
+.prizes__title {
+  font: 600 0.9rem 'Poppins', system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #d9d9e4;
+}
+
+.prizes__amount {
+  margin-top: 0.6rem;
+  font: 400 clamp(2.4rem, 4.6vw, 4rem) / 1 'Bebas Neue', Impact, sans-serif;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+
+.prizes__tracks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.8rem 2.2rem;
+  border: 1px solid rgb(247 168 201 / 0.4);
+  border-radius: 10px;
+  background: rgb(247 168 201 / 0.06);
+  text-align: left;
+}
+
+.prizes__tracks-label {
+  font: 400 clamp(1.5rem, 2.4vw, 2rem) / 1 'Bebas Neue', Impact, sans-serif;
+  letter-spacing: 0.06em;
+  color: #f7a8c9;
+}
+
+.prizes__tracks p {
+  margin: 0.5rem 0 0;
+  font: 500 clamp(0.95rem, 1.2vw, 1.05rem) / 1.5 'DM Sans', system-ui, sans-serif;
+  color: #d9d9e4;
+}
+
+.prizes__tracks-amount {
+  flex: none;
+  padding: 0.7em 1.4em;
+  border-radius: 999px;
+  background: #f7a8c9;
+  color: #1a1020;
+  font: 700 0.9rem 'Poppins', system-ui, sans-serif;
+}
+
+@media (max-width: 800px) {
+  /* the header stacks on phones: centre it there too */
+  .prizes .prizes__header {
+    align-items: center;
+    text-align: center;
+  }
+
+  .prizes .prizes__header .visit__logo {
+    align-items: center;
+  }
+
+  /* stack the podium: first place on top, with a smaller trophy at the start of each row */
+  .prizes__podium {
+    grid-template-columns: 1fr;
+    margin-top: 3rem;
+  }
+
+  .prizes__card--first,
+  .prizes__card--second,
+  .prizes__card--third {
+    order: 0;
+    min-height: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.4rem 1.4rem;
+  }
+
+  .prizes__card--first {
+    order: 1;
+  }
+
+  .prizes__card--second {
+    order: 2;
+  }
+
+  .prizes__card--third {
+    order: 3;
+  }
+
+  .prizes__trophy,
+  .prizes__card--first .prizes__trophy,
+  .prizes__trophy--image,
+  .prizes__card--first .prizes__trophy--image {
+    flex: none;
+    width: 3.4rem;
+    margin: 0 0.8rem 0 0;
+  }
+
+  .prizes__title {
+    flex: 1;
+    text-align: left;
+    font-size: 0.72rem;
+  }
+
+  .prizes__amount {
+    margin-top: 0;
+  }
+
+  .prizes__tracks {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

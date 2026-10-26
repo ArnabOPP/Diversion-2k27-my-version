@@ -23,6 +23,34 @@
     width: 31vw;
   }
 
+  .hero__coming {
+    left: 6%;
+    bottom: 9%;
+    font-size: 3.6vw;
+  }
+
+  .hero__coming--venue {
+    left: auto;
+    right: 6%;
+  }
+
+  .site-header__partners {
+    left: calc(4% + 31vw + 3vw);
+    top: 2.4%;
+    height: 10.4vw;
+    gap: 2.5vw;
+  }
+
+  .site-header__partners img {
+    height: 7vw;
+  }
+
+  .site-header__acm {
+    right: calc(5% + 9vw + 3vw);
+    top: calc(3.2% + 2.9vw);
+    height: 9vw;
+  }
+
   .site-header__menu {
     right: 5%;
     top: 3.2%;

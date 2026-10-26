@@ -329,3 +329,20 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* Sections that follow something other than a video sit directly under it (no slide-over, no overlap) */
+.about--flush {
+  margin-top: 0;
+}
+
+.about--flush::before {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+/* ...and when that something ends in the schedule's purple, start from that purple and fade into the dark */
+.about--from-purple::before {
+  background:
+    linear-gradient(to bottom, #54315b 0, rgb(84 49 91 / 0) 70vh),
+    linear-gradient(189deg, #1e1e37 0%, #151528 50%, #0c0d1c 100%);
+}

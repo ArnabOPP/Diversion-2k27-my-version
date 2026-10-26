@@ -78,3 +78,8 @@ body::-webkit-scrollbar {
   height: 100vh;
   background: #54315b;
 }
+
+/* the same space, in the dark colour the FAQ ends in */
+.video-gap--dark {
+  background: #0e0f1e;
+}
