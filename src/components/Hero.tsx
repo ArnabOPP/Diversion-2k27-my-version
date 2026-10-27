@@ -1,22 +1,23 @@
 import { useEffect } from 'react'
 import './Hero.css'
 
-// Devfolio hackathon slug (the part after .devfolio.co/ in the hackathon's page address) - replace with the real one
-const DEVFOLIO_SLUG = 'diversion-2k27'
+// Devfolio hackathon slug (the part before .devfolio.co in the hackathon's page address)
+const DEVFOLIO_SLUG = 'diversion2k27'
 
 const asset = (name: string) => encodeURI(`/${name}`)
 
 export default function Hero() {
-  // Devfolio's script turns the .apply-button element below into the "Apply with Devfolio" button
+  // Devfolio's script turns the .apply-button element below into the "Apply with Devfolio" button.
+  // It is added once and left in place: adding and removing it again (as React's dev double-mount does) makes the
+  // script run twice and the button sometimes stay blank
   useEffect(() => {
+    const src = 'https://apply.devfolio.co/v2/sdk.js'
+    if (document.querySelector(`script[src="${src}"]`)) return
     const script = document.createElement('script')
-    script.src = 'https://apply.devfolio.co/v2/sdk.js'
+    script.src = src
     script.async = true
     script.defer = true
     document.body.appendChild(script)
-    return () => {
-      document.body.removeChild(script)
-    }
   }, [])
 
   return (
