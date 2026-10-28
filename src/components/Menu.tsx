@@ -73,9 +73,9 @@ export default function Menu({ open, onClose }: Props) {
         <img className="menu__logo" src="/diversion%206%20logo.png" alt="Diversion 2K27" />
         <div className="menu__foot">
           <p>
-            KOLKATA
+            VENUE
             <br />
-            2027
+            IEM GURUKUL CAMPUS
           </p>
         </div>
       </div>
@@ -84,7 +84,11 @@ export default function Menu({ open, onClose }: Props) {
         <div className="menu__head">
           <img src="/diversion%20logo.png" alt="" />
           <span className="menu__sep" />
-          <span className="menu__title">DIVERSiON 2K27</span>
+          <span className="menu__title">
+            DATES
+            <br />
+            6-7 MARCH 2027
+          </span>
         </div>
 
         <button className="menu__close" type="button" aria-label="Close menu" onClick={onClose} tabIndex={open ? 0 : -1}>

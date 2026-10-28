@@ -70,17 +70,18 @@
   flex-direction: column;
   flex: none;
   padding-right: 1.5em;
-  font-size: clamp(1.8rem, 5vw, 3.6rem);
-  line-height: 0.95;
+  font-family: 'Pricedown', 'Bowlby One', Impact, sans-serif; /* the GTA font: wider than Poppins, so a little smaller */
+  font-size: clamp(1.75rem, 4.5vw, 3.4rem);
+  line-height: 1;
 }
 
 .visit__logo-visit {
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.02em;
 }
 
 .visit__logo-name {
-  font-weight: 700;
+  font-weight: 400; /* Pricedown has only one weight */
   letter-spacing: 0.01em;
 }
 
@@ -120,7 +121,7 @@
 
 /* Straight by default, tilts slightly on hover */
 .visit__card:hover {
-  transform: rotate(-2deg);
+  transform: rotate(-1deg) scale(1.03);
 }
 
 .visit__photo {
@@ -151,7 +152,7 @@
   flex-direction: column;
   padding-right: 1.5em; /* room for the mark */
   color: #fff;
-  font: 700 clamp(1.2rem, 3.2vw, 2.4rem) / 0.95 'Poppins', system-ui, sans-serif;
+  font: 400 clamp(1.3rem, 3.5vw, 2.65rem) / 1 'Pricedown', 'Bowlby One', Impact, sans-serif; /* the GTA font, wider than Poppins, so a little smaller */
   letter-spacing: 0.01em;
   text-shadow: 0 2px 10px rgb(0 0 0 / 0.35);
 }

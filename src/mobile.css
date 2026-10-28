@@ -26,7 +26,7 @@
   .hero__coming {
     left: 6%;
     bottom: 9%;
-    font-size: 3.6vw;
+    font-size: 3vw;
   }
 
   .hero__coming--venue {
@@ -121,7 +121,7 @@
   }
 
   .schedule__text h2 {
-    font-size: 3rem;
+    font-size: 2.3rem;
   }
 
   .schedule__back {
@@ -191,7 +191,7 @@
   /* ---------- Menu: bigger touch targets ---------- */
   .menu__list a {
     padding: 0.15rem 0;
-    font-size: 2.1rem;
+    font-size: 1.9rem;
     line-height: 1.4;
   }
 }

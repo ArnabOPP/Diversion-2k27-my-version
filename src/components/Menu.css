@@ -52,7 +52,7 @@
   left: 5%;
   bottom: 6%;
   color: #fff;
-  font: 600 clamp(0.8rem, 1.1vw, 1rem) / 1.3 'Poppins', system-ui, sans-serif;
+  font: 400 clamp(1.05rem, 1.5vw, 1.4rem) / 1.3 'Pricedown', 'Bowlby One', Impact, sans-serif;
 }
 
 .menu__foot p {
@@ -79,7 +79,7 @@
   gap: 1rem;
   height: 9rem;
   color: #d8ccff;
-  font: 600 clamp(0.9rem, 1.2vw, 1.1rem) 'Poppins', system-ui, sans-serif;
+  font: 400 clamp(0.95rem, 1.35vw, 1.25rem) / 1.3 'Pricedown', 'Bowlby One', Impact, sans-serif;
 }
 
 .menu__head img {
@@ -116,7 +116,7 @@
 
 .menu__list a {
   display: block;
-  font: 400 min(clamp(1.8rem, 3.5vw, 2.9rem), 5.3vh) / 1.25 'Bebas Neue', Impact, sans-serif; /* the vh cap keeps all the options on screen */
+  font: 400 min(clamp(1.7rem, 3.2vw, 2.7rem), 5vh) / 1.3 'Pricedown', 'Bowlby One', Impact, sans-serif; /* the vh cap keeps all the options on screen */
   letter-spacing: 0.01em;
   color: #c9b8ff;
   text-decoration: none;

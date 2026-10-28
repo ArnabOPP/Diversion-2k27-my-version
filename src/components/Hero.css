@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bowlby+One&family=Nunito+Sans:wght@600&display=swap');
 
 @font-face {
   font-family: 'Pricedown';
@@ -94,17 +94,15 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  font: 700 clamp(1rem, 1.9vw, 1.9rem) / 1.15 'Poppins', system-ui, sans-serif;
+  font: 400 clamp(1.1rem, 1.8vw, 1.8rem) / 1.15 'Pricedown', 'Bowlby One', Impact, sans-serif;
   letter-spacing: 0.02em;
+  /* a dark outline around the letters (like the headline above) keeps them readable over the bright railing and water */
+  -webkit-text-stroke: 0.14em #1c1540;
+  paint-order: stroke fill;
+  stroke-linejoin: round;
 }
 
-/* "COMING" takes the same dark gradient as "GET READY FOR"; the line under it stays white */
 .hero__coming-top {
-  color: #2b2150; /* fallback */
-  background: linear-gradient(95deg, #1c1540 0%, #34286a 50%, #582b78 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
   align-self: flex-start;
 }
 
@@ -117,18 +115,40 @@
 
 .hero__coming--venue .hero__coming-top {
   align-self: flex-end;
-  background: none;
-  -webkit-text-fill-color: #000; /* plain black instead of the gradient */
-  color: #000;
+}
+
+.hero__coming-top {
+  color: #fff;
 }
 
 .hero__coming-sub {
-  color: #fff;
-  text-shadow: 0 2px 10px rgb(20 10 50 / 0.45);
+  color: #e8e4c8; /* "6-7 MARCH 2027" and "IEM GURUKUL CAMPUS" */
 }
+
 
 .hero__apply {
   z-index: 5;
+}
+
+/* our own "Apply with Devfolio" button, styled like Devfolio's dark one */
+.hero__apply-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  width: 312px;
+  height: 44px;
+  border-radius: 6px;
+  background: #27333f; /* Devfolio's dark button colour */
+  color: #fff;
+  font: 600 1.15rem 'Nunito Sans', 'Poppins', system-ui, sans-serif;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.hero__apply-link:hover {
+  background: #323f4c;
+  transform: translateY(-2px);
 }
 
 .hero__apply {
