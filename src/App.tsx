@@ -74,7 +74,7 @@ export default function App() {
         <Prizes />
         {/* 7 Organizers */}
         <Visit id="visit-3" content="team" videoNext />
-        <ScrubVideo src="/video%2011%20scrub.mp4" />
+        <ScrubVideo src="/video%2015%20scrub.mp4" />
         {/* 8 Schedule */}
         <Schedule />
         {/* 9 Community partners */}

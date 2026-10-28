@@ -108,7 +108,7 @@ export default function Prizes({ id = 'prizes' }: PrizesProps) {
             <span className="prizes__tracks-label">TRACK WINNERS</span>
             <p>Every track has its own winner, and every track winner takes home a prize.</p>
           </div>
-          <span className="prizes__tracks-amount">Prizes to be announced</span>
+          <span className="prizes__tracks-amount">Tracks to be announced</span>
         </div>
       </div>
     </section>

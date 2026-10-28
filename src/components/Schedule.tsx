@@ -114,9 +114,9 @@ const SPEED = 1.5 // sideways pixels moved per pixel of vertical scroll (1 = sam
 
 // Contact variant: four cards instead of photos (details are placeholders until the real ones are known)
 const CONTACTS = [
-  { kind: 'call', title: 'Call us', detail: '+91 00000 00000', action: 'Call now', image: 'images.jpeg' }, // image: a picture filling the card
-  { kind: 'mail', title: 'Mail us', detail: 'team@example.com', action: 'Send a mail', image: 'Computers_GTAV_Tracey_not_studying.jpg' },
-  { kind: 'discord', title: 'Discord', detail: 'discord.gg/your-invite', action: 'Join the server', image: 'Rockstar_opens_Official_GTA_6_discord_channel_ohpurx.png' },
+  { kind: 'call', title: 'Call us', detail: '+91 00000 00000', action: 'Call now' },
+  { kind: 'mail', title: 'Mail us', detail: 'team@example.com', action: 'Send a mail' },
+  { kind: 'discord', title: 'Discord', detail: 'discord.gg/your-invite', action: 'Join the server' },
 ]
 const CONTACT_W = 52 // card size in vh
 const CONTACT_H = 64
@@ -148,36 +148,29 @@ const COPY = {
   },
 }
 
+// The logos in the middle of the contact cards, in their own colours (a phone, Gmail and Discord)
+const LOGOS: Record<string, { color: string; path: string }> = {
+  call: {
+    color: '#34c759',
+    path: 'M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z',
+  },
+  mail: {
+    color: '#ea4335',
+    path: 'M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z',
+  },
+  discord: {
+    color: '#5865f2',
+    path: 'M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z',
+  },
+}
+
 function ContactIcon({ kind }: { kind: string }) {
-  const common = { width: 34, height: 34, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.7, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const }
-  switch (kind) {
-    case 'call':
-      return (
-        <svg {...common} aria-hidden>
-          <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" />
-        </svg>
-      )
-    case 'mail':
-      return (
-        <svg {...common} aria-hidden>
-          <rect x="3" y="5" width="18" height="14" rx="2" />
-          <path d="M3 7l9 6 9-6" />
-        </svg>
-      )
-    case 'discord':
-      return (
-        <svg {...common} aria-hidden>
-          <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 21 12z" />
-          <path d="M9 11.5h.01M15 11.5h.01" />
-        </svg>
-      )
-    default:
-      return (
-        <svg {...common} aria-hidden>
-          <path d="M4 4l16 16M20 4L4 20" />
-        </svg>
-      )
-  }
+  const logo = LOGOS[kind]
+  return (
+    <svg viewBox="0 0 24 24" width="100%" height="100%" fill={logo.color} aria-hidden>
+      <path d={logo.path} />
+    </svg>
+  )
 }
 
 interface ScheduleProps {
@@ -266,10 +259,9 @@ export default function Schedule({ id = 'schedule', variant = 'schedule' }: Sche
               ? CONTACTS.map((c, i) => (
                   <div
                     key={c.kind}
-                    className={`schedule__contact${c.image ? ' schedule__contact--photo' : ''}`}
+                    className="schedule__contact"
                     style={
                       {
-                        ...(c.image ? { '--photo': `url("${asset(c.image)}")` } : {}),
                         '--x': CONTACT_START + i * (CONTACT_W + CONTACT_GAP),
                         '--y': 18,
                         '--w': CONTACT_W,
@@ -280,11 +272,9 @@ export default function Schedule({ id = 'schedule', variant = 'schedule' }: Sche
                     <span className="schedule__num" aria-hidden="true">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    {!c.image && (
-                      <div className="schedule__contact-icon">
-                        <ContactIcon kind={c.kind} />
-                      </div>
-                    )}
+                    <div className="schedule__contact-icon">
+                      <ContactIcon kind={c.kind} />
+                    </div>
                     <h4>{c.title}</h4>
                     <div className="schedule__contact-row">
                       <button type="button">{c.action}</button>

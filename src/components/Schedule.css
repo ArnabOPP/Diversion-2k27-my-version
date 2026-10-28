@@ -124,7 +124,7 @@
 
 .schedule__text h3 {
   margin: 1.4em 0 1em;
-  font: 400 clamp(1rem, 1.5vw, 1.55rem) / 1.2 'Pricedown', 'Bowlby One', Impact, sans-serif;
+  font: 400 clamp(1.1rem, 1.7vw, 1.8rem) / 1.15 'Bebas Neue', Impact, sans-serif;
   letter-spacing: 0.01em;
   color: #fdd7b0;
 }
@@ -301,13 +301,12 @@
 }
 
 .schedule__contact-icon {
-  display: grid;
-  place-items: center;
-  width: 9vh;
-  height: 9vh;
-  border-radius: 50%;
-  background: #4b2a5d;
-  color: #fdd7b0;
+  position: absolute;
+  left: 50%;
+  top: 36%;
+  transform: translate(-50%, -50%);
+  width: 17vh;
+  height: 17vh;
 }
 
 .schedule__contact h4 {
