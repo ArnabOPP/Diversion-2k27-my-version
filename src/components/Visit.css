@@ -40,6 +40,11 @@
   right: 1.4em; /* larger = further left; it overlaps the end of the first line from about 0.8em */
 }
 
+/* Team card: its title sits a little higher than on the other cards */
+.visit--team .visit__title {
+  top: 4%;
+}
+
 /* The last section of the page: no room left for a video below */
 /* Follows another card: the same navy all the way, no fade from a darker colour */
 .visit--flat {

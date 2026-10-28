@@ -3,7 +3,19 @@ import './Visit.css'
 const asset = (name: string) => encodeURI(`/${name}`)
 
 // Text for each use of this section (the card after the video, and the hacker's guide after the schedule)
-const COPY = {
+const DEFAULT_PHOTO = 'Scroll Down (15).png'
+
+const COPY: Record<string, {
+  logoTop: string
+  logoMain: string
+  blurb: string
+  photo?: string // the card's picture; the shared one when left out
+  photoAlt: string
+  title: string
+  brandTop: string
+  brandMain: string
+  button: string
+}> = {
   about: {
     logoTop: 'VISIT',
     logoMain: 'DIVERSION',
@@ -18,21 +30,23 @@ const COPY = {
     logoTop: "HACKER'S",
     logoMain: 'GUIDE',
     blurb: 'Everything you need to know before, during and after Diversion 2K27.',
-    photoAlt: 'Biswa Bangla Gate and the Kolkata skyline',
+    photo: 'Untitled design (71).png',
+    photoAlt: "Hacker's Guide",
     title: "Hacker's Guide",
     brandTop: 'DIVERSION',
     brandMain: '2K27',
-    button: 'Read the Guide',
+    button: 'Releasing Soon',
   },
   team: {
     logoTop: 'TEAM',
     logoMain: 'DIVERSION',
     blurb: 'Meet the minds behind Diversion, the students who plan, build and run it every year.',
-    photoAlt: 'Placeholder photo for the Team Diversion card',
+    photo: 'Untitled design (72).png',
+    photoAlt: 'Team Diversion',
     title: 'Team Diversion',
     brandTop: 'MEET THE',
     brandMain: 'TEAM',
-    button: 'Meet the Team',
+    button: 'Revealing Soon',
   },
   prizes: {
     logoTop: 'WIN',
@@ -51,7 +65,7 @@ interface VisitProps {
   after?: 'about' | 'schedule' | 'visit' // what comes before it: how its top blends in (dark, purple, or the card's own navy)
   videoNext?: boolean // a scrub video follows: leave empty space below for it to emerge from
   end?: boolean // the last section of the page: normal space below instead of the room left for a video
-  content?: keyof typeof COPY // which text to show
+  content?: 'about' | 'schedule' | 'team' | 'prizes' // which text to show
 }
 
 export default function Visit({ id = 'visit', after = 'about', videoNext = false, end = false, content = 'about' }: VisitProps) {
@@ -70,7 +84,7 @@ export default function Visit({ id = 'visit', after = 'about', videoNext = false
         </header>
 
         <figure className="visit__card">
-          <img className="visit__photo" src={asset('Scroll Down (15).png')} alt={copy.photoAlt} />
+          <img className="visit__photo" src={asset(copy.photo ?? DEFAULT_PHOTO)} alt={copy.photoAlt} />
 
           <p className="visit__title">{copy.title}</p>
 

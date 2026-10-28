@@ -71,9 +71,9 @@ const COPY = {
       },
     ],
     photos: {
-      talk: { file: 'about 2.png', alt: 'Participants presenting their project' },
-      hack: { file: 'about 3.png', alt: 'Participants hacking at their laptops' },
-      team: { file: 'about 1.png', alt: 'A winning team celebrating with their trophy' },
+      talk: { file: 'Untitled design (47).png', alt: 'Hall of fame moment' },
+      hack: { file: 'Untitled design (48).png', alt: 'Hall of fame moment' },
+      team: { file: 'Untitled design (46).png', alt: 'Hall of fame moment' },
     },
   },
 }
