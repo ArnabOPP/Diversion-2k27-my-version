@@ -132,14 +132,13 @@
 
 .visit__title {
   position: absolute;
-  top: 9%;
-  left: 50%;
+  top: 8%;
+  right: 5%;
   margin: 0;
-  transform: translateX(-50%) rotate(-8deg);
   white-space: nowrap;
-  font: 400 clamp(2.4rem, 7vw, 5.6rem) / 1 'Kaushan Script', cursive;
+  font: 400 clamp(1.9rem, 5.2vw, 4.2rem) / 1 'Pricedown', 'Bowlby One', Impact, sans-serif; /* the GTA font is wider than the script it replaced, so it is smaller */
   color: #fff;
-  -webkit-text-stroke: 0.1em #2a64a8;
+  -webkit-text-stroke: 0.08em #2a64a8;
   paint-order: stroke fill;
   text-shadow: 0.04em 0.05em 0 #2a64a8;
 }

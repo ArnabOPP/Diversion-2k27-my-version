@@ -73,7 +73,7 @@ export default function ScrollVideo({ children }: Props) {
           <video
             ref={videoRef}
             className="scroll-video__media"
-            src="/car%20vid%20scrub.mp4"
+            src="/video%2010%20scrub.mp4"
             muted
             playsInline
             preload="auto"

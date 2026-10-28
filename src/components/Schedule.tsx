@@ -132,7 +132,7 @@ const COPY = {
     script: 'Schedule',
     title: ['THE FULL', 'SCHEDULE'],
     subtitle: 'TWO DAYS, ONE CAMPUS, ENDLESS IDEAS.',
-    body: 'Placeholder text for the Diversion 2K27 schedule. The opening ceremony, hacking hours, mentor rounds, demos and the closing ceremony will be listed here, hour by hour, so every team knows exactly what is coming next.',
+    body: 'The full schedule for Diversion 2K27, from the opening ceremony and hacking hours to mentor rounds, demos and the closing ceremony, will be announced soon. Stay tuned.',
     brand: ['VISIT', 'DIVERSION'],
     photo: { file: 'Untitled design (45).png', alt: 'Metcalfe Hall in Kolkata' },
     backTo: 'visit-3', // the organizers card, which comes just before the schedule

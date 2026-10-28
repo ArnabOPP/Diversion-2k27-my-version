@@ -65,7 +65,7 @@ export default function App() {
         <About id="about-2" last />
         {/* 4 Hacker's guide */}
         <Visit id="visit-2" content="schedule" videoNext />
-        <ScrubVideo src="/video%207%20scrub.mp4" />
+        <ScrubVideo src="/video%209%20scrub.mp4" />
         {/* 5 Achievements */}
         <About id="about-3" last content="hall" />
         <div className="video-gap video-gap--dark" aria-hidden="true" />
@@ -74,21 +74,21 @@ export default function App() {
         <Prizes />
         {/* 7 Organizers */}
         <Visit id="visit-3" content="team" videoNext />
-        <ScrubVideo src="/video%205%20scrub.mp4" />
+        <ScrubVideo src="/video%2011%20scrub.mp4" />
         {/* 8 Schedule */}
         <Schedule />
         {/* 9 Community partners */}
         <div className="video-gap" aria-hidden="true" />
-        <ScrubVideo src="/video%207%20scrub.mp4" />
+        <ScrubVideo src="/video%2012%20scrub.mp4" />
         <Partners id="about-4" />
         {/* 10 Contact */}
         <Schedule id="contact" variant="contact" />
         <div className="video-gap" aria-hidden="true" />
-        <ScrubVideo src="/video%206%20scrub.mp4" />
+        <ScrubVideo src="/video%2013%20scrub.mp4" />
         {/* 11 FAQ */}
         <Faq id="faq" />
         <div className="video-gap video-gap--dark" aria-hidden="true" />
-        <ScrubVideo src="/video%204%20scrub.mp4" />
+        <ScrubVideo src="/video%2014%20scrub.mp4" />
         {/* 12 Closing screen and footer */}
         <Coming />
         <Header />
