@@ -114,9 +114,9 @@ const SPEED = 1.5 // sideways pixels moved per pixel of vertical scroll (1 = sam
 
 // Contact variant: four cards instead of photos (details are placeholders until the real ones are known)
 const CONTACTS = [
-  { kind: 'call', title: 'Call us', detail: '+91 00000 00000', action: 'Call now' },
-  { kind: 'mail', title: 'Mail us', detail: 'team@example.com', action: 'Send a mail' },
-  { kind: 'discord', title: 'Discord', detail: 'discord.gg/your-invite', action: 'Join the server' },
+  { kind: 'call', title: 'Call us', detail: '+91 00000 00000', action: 'Call now', image: 'images.jpeg' }, // image: a picture filling the card
+  { kind: 'mail', title: 'Mail us', detail: 'team@example.com', action: 'Send a mail', image: 'Computers_GTAV_Tracey_not_studying.jpg' },
+  { kind: 'discord', title: 'Discord', detail: 'discord.gg/your-invite', action: 'Join the server', image: 'Rockstar_opens_Official_GTA_6_discord_channel_ohpurx.png' },
 ]
 const CONTACT_W = 52 // card size in vh
 const CONTACT_H = 64
@@ -143,7 +143,7 @@ const COPY = {
     subtitle: 'WE WOULD LOVE TO HEAR FROM YOU.',
     body: 'Questions, ideas or want to partner with us? Reach out through any of the channels that follow and the team will get back to you.',
     brand: ['CONTACT', 'DIVERSION'],
-    photo: { file: 'Scroll Down (15).png', alt: 'Placeholder postcard' },
+    photo: { file: 'c247c6c7a3efe66c120e71b882d64d370317c7ba-1920x1080.jpg', alt: 'Say hello' },
     backTo: 'about-4', // the partners section, which comes just before the contact section
   },
 }
@@ -266,9 +266,10 @@ export default function Schedule({ id = 'schedule', variant = 'schedule' }: Sche
               ? CONTACTS.map((c, i) => (
                   <div
                     key={c.kind}
-                    className="schedule__contact"
+                    className={`schedule__contact${c.image ? ' schedule__contact--photo' : ''}`}
                     style={
                       {
+                        ...(c.image ? { '--photo': `url("${asset(c.image)}")` } : {}),
                         '--x': CONTACT_START + i * (CONTACT_W + CONTACT_GAP),
                         '--y': 18,
                         '--w': CONTACT_W,
@@ -279,9 +280,11 @@ export default function Schedule({ id = 'schedule', variant = 'schedule' }: Sche
                     <span className="schedule__num" aria-hidden="true">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <div className="schedule__contact-icon">
-                      <ContactIcon kind={c.kind} />
-                    </div>
+                    {!c.image && (
+                      <div className="schedule__contact-icon">
+                        <ContactIcon kind={c.kind} />
+                      </div>
+                    )}
                     <h4>{c.title}</h4>
                     <div className="schedule__contact-row">
                       <button type="button">{c.action}</button>

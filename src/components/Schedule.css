@@ -88,11 +88,10 @@
 
 .schedule__script {
   position: absolute;
-  top: 12%;
-  left: 18%;
+  top: 6%;
+  right: 4%;
   margin: 0;
-  transform: rotate(-9deg);
-  font: 400 clamp(2rem, 5.6vw, 5.2rem) / 1 'Kaushan Script', cursive;
+  font: 400 clamp(1.7rem, 4.6vw, 4.3rem) / 1 'Pricedown', 'Bowlby One', Impact, sans-serif;
   color: #fff;
   -webkit-text-stroke: 0.1em #2a64a8;
   paint-order: stroke fill;
@@ -125,7 +124,7 @@
 
 .schedule__text h3 {
   margin: 1.4em 0 1em;
-  font: 400 clamp(1.1rem, 1.7vw, 1.8rem) / 1.15 'Bebas Neue', Impact, sans-serif;
+  font: 400 clamp(1rem, 1.5vw, 1.55rem) / 1.2 'Pricedown', 'Bowlby One', Impact, sans-serif;
   letter-spacing: 0.01em;
   color: #fdd7b0;
 }
@@ -146,7 +145,7 @@
   align-items: center;
   justify-content: center;
   will-change: transform;
-  font: 400 clamp(6rem, 16vw, 16rem) / 1 'Bebas Neue', Impact, sans-serif;
+  font: 400 clamp(5rem, 13vw, 13rem) / 1 'Pricedown', 'Bowlby One', Impact, sans-serif;
   letter-spacing: 0.03em;
   color: #fff;
 }
@@ -211,19 +210,19 @@
   flex-direction: column;
   gap: 0.15em;
   color: #fff;
-  font-family: 'Poppins', system-ui, sans-serif;
+  font-family: 'Pricedown', 'Bowlby One', Impact, sans-serif;
   line-height: 1.1;
   text-shadow: 0 1px 10px rgb(0 0 0 / 0.7), 0 0 2px rgb(0 0 0 / 0.5);
   pointer-events: none;
 }
 
 .schedule__caption strong {
-  font-weight: 700;
-  font-size: calc(clamp(1.1rem, 3.4vh, 2.1rem) * var(--cap, 1));
+  font-weight: 400; /* Pricedown has only one weight */
+  font-size: calc(clamp(1rem, 3vh, 1.85rem) * var(--cap, 1));
 }
 
 .schedule__caption span {
-  font-weight: 600;
+  font-weight: 400;
   font-size: calc(clamp(0.85rem, 2.2vh, 1.3rem) * var(--cap, 1));
   letter-spacing: 0.04em;
   color: #fdd7b0;
@@ -281,6 +280,21 @@
   transition: border-color 0.3s ease, background 0.3s ease;
 }
 
+/* A card with a picture: the picture fills it, under a dark fade so the text at the bottom stays readable */
+.schedule__contact--photo {
+  overflow: hidden;
+}
+
+.schedule__contact--photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to top, rgb(20 10 40 / 0.92) 0%, rgb(20 10 40 / 0.55) 38%, transparent 65%),
+    var(--photo) center / cover no-repeat;
+}
+
 .schedule__contact:hover {
   border-color: #fdd7b0;
   background: rgb(253 215 176 / 0.1);
@@ -298,7 +312,7 @@
 
 .schedule__contact h4 {
   margin: 0;
-  font: 400 clamp(2.4rem, 7vh, 4.8rem) / 1 'Bebas Neue', Impact, sans-serif;
+  font: 400 clamp(2rem, 5.8vh, 4rem) / 1 'Pricedown', 'Bowlby One', Impact, sans-serif;
   color: #fdd7b0;
 }
 

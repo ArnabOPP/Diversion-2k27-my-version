@@ -38,6 +38,21 @@
   transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
+/* a picture behind the content of each podium card, kept faint */
+.prizes__card {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.prizes__card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url('/mQFyz7u837yijRnR7uKv6g.jpg') center / cover no-repeat;
+  opacity: 0.22;
+}
+
 .prizes__card:hover {
   transform: translateY(-6px);
   border-color: var(--tone);
@@ -87,7 +102,7 @@
 }
 
 .prizes__rank {
-  font: 400 clamp(3.4rem, 7vw, 6rem) / 1 'Bebas Neue', Impact, sans-serif;
+  font: 400 clamp(2.8rem, 5.8vw, 5rem) / 1 'Pricedown', 'Bowlby One', Impact, sans-serif;
   color: var(--tone);
 }
 
@@ -100,7 +115,7 @@
 
 .prizes__amount {
   margin-top: 0.6rem;
-  font: 400 clamp(2.4rem, 4.6vw, 4rem) / 1 'Bebas Neue', Impact, sans-serif;
+  font: 400 clamp(2rem, 3.9vw, 3.4rem) / 1 'Pricedown', 'Bowlby One', Impact, sans-serif;
   letter-spacing: 0.02em;
   color: #fff;
 }
@@ -118,7 +133,7 @@
 }
 
 .prizes__tracks-label {
-  font: 400 clamp(1.5rem, 2.4vw, 2rem) / 1 'Bebas Neue', Impact, sans-serif;
+  font: 400 clamp(1.25rem, 2vw, 1.7rem) / 1 'Pricedown', 'Bowlby One', Impact, sans-serif;
   letter-spacing: 0.06em;
   color: #f7a8c9;
 }
