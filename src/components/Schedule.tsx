@@ -116,7 +116,7 @@ const SPEED = 1.5 // sideways pixels moved per pixel of vertical scroll (1 = sam
 const CONTACTS = [
   { kind: 'call', title: 'Call us', detail: '+91 00000 00000', action: 'Call now' },
   { kind: 'mail', title: 'Mail us', detail: 'team@example.com', action: 'Send a mail' },
-  { kind: 'discord', title: 'Discord', detail: 'discord.gg/your-invite', action: 'Join the server' },
+  { kind: 'discord', title: 'Discord', detail: 'discord.gg/tTvDwrhDdG', action: 'Join the server', href: 'https://discord.com/invite/tTvDwrhDdG' },
 ]
 const CONTACT_W = 52 // card size in vh
 const CONTACT_H = 64
@@ -262,6 +262,7 @@ export default function Schedule({ id = 'schedule', variant = 'schedule' }: Sche
                     className="schedule__contact"
                     style={
                       {
+                        '--tint': LOGOS[c.kind].color,
                         '--x': CONTACT_START + i * (CONTACT_W + CONTACT_GAP),
                         '--y': 18,
                         '--w': CONTACT_W,
@@ -277,7 +278,13 @@ export default function Schedule({ id = 'schedule', variant = 'schedule' }: Sche
                     </div>
                     <h4>{c.title}</h4>
                     <div className="schedule__contact-row">
-                      <button type="button">{c.action}</button>
+                      {c.href ? (
+                        <a className="schedule__contact-link" href={c.href} target="_blank" rel="noopener noreferrer">
+                          {c.action}
+                        </a>
+                      ) : (
+                        <button type="button">{c.action}</button>
+                      )}
                       <p>{c.detail}</p>
                     </div>
                   </div>

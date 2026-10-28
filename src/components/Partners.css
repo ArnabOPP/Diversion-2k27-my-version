@@ -73,6 +73,29 @@
   background: color-mix(in srgb, var(--tier, #e8b98f) 10%, transparent);
 }
 
+/* a box with a real logo: no fill, the dashed border goes solid */
+.partners__box--logo {
+  border-style: solid;
+  background: none;
+}
+
+.partners__box--logo:hover {
+  background: none;
+}
+
+/* the picture is laid over the box instead of sizing it, so the box stays the same size as the others */
+.partners__box--logo {
+  position: relative;
+}
+
+.partners__box--logo img {
+  position: absolute;
+  inset: 11%;
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+}
+
 .partners__label {
   font: 500 clamp(0.75rem, 1.1vw, 0.95rem) 'DM Sans', system-ui, sans-serif;
   color: rgb(241 241 245 / 0.55);

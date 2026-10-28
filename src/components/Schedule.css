@@ -273,31 +273,19 @@
   gap: 4vh;
   padding: 2.4vh 2.2vh 2.4vh;
   box-sizing: border-box;
-  border: 1px solid rgb(253 215 176 / 0.28);
+  /* --tint is the colour of the card's logo (green, red or blue). The card is a solid gradient from a deep shade of
+     that colour at the top to near-black at the bottom, so it stands out from the purple page behind it */
+  border: 1px solid color-mix(in srgb, var(--tint, #fdd7b0) 60%, transparent);
   border-radius: 8px;
-  background: rgb(255 255 255 / 0.07);
+  background: linear-gradient(165deg, color-mix(in srgb, var(--tint, #fdd7b0) 48%, #1a0f2e) 0%, #1a0f2e 78%);
+  box-shadow: 0 1.5vh 4vh rgb(10 4 24 / 0.4);
   will-change: transform;
   transition: border-color 0.3s ease, background 0.3s ease;
 }
 
-/* A card with a picture: the picture fills it, under a dark fade so the text at the bottom stays readable */
-.schedule__contact--photo {
-  overflow: hidden;
-}
-
-.schedule__contact--photo::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    linear-gradient(to top, rgb(20 10 40 / 0.92) 0%, rgb(20 10 40 / 0.55) 38%, transparent 65%),
-    var(--photo) center / cover no-repeat;
-}
-
 .schedule__contact:hover {
-  border-color: #fdd7b0;
-  background: rgb(253 215 176 / 0.1);
+  border-color: var(--tint, #fdd7b0);
+  background: linear-gradient(165deg, color-mix(in srgb, var(--tint, #fdd7b0) 62%, #1a0f2e) 0%, #1a0f2e 82%);
 }
 
 .schedule__contact-icon {
@@ -331,7 +319,8 @@
   overflow-wrap: anywhere;
 }
 
-.schedule__contact button {
+.schedule__contact button,
+.schedule__contact-link {
   flex: none;
   padding: 0.8em 1.5em;
   border: 0;
@@ -340,6 +329,7 @@
   color: #1a1020;
   font: 700 clamp(0.8rem, 1.8vh, 0.95rem) 'Poppins', system-ui, sans-serif;
   white-space: nowrap;
+  text-decoration: none;
   cursor: pointer;
   transition: transform 0.2s ease;
 }

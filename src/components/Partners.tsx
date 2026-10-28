@@ -2,10 +2,10 @@ import './About.css' // shares the section background, the slide-over and the he
 import './Partners.css'
 
 // Sponsorship tiers: the higher the tier, the fewer and bigger the boxes (swap in logos later)
-const TIERS = [
+const TIERS: { name: string; className: string; boxes: number; logos?: string[] }[] = [
   { name: 'TITLE PARTNER', className: 'title', boxes: 1 },
   { name: 'ELITE PARTNERS', className: 'elite', boxes: 2 },
-  { name: 'GOLD PARTNERS', className: 'gold', boxes: 3 },
+  { name: 'GOLD PARTNERS', className: 'gold', boxes: 3, logos: ['1399882-white.png'] }, // logos fill the first boxes
   { name: 'SILVER PARTNERS', className: 'silver', boxes: 4 },
 ]
 const COMMUNITY_BOXES = 16 // 4 x 4
@@ -26,10 +26,14 @@ export default function Partners({ id = 'partners', fromPurple = false }: Partne
           {TIERS.map((tier) => (
             <div key={tier.className} className={`partners__tier partners__tier--${tier.className}`}>
               <h4 className="partners__tier-name">{tier.name}</h4>
-              <ul className="partners__grid" style={{ gridTemplateColumns: `repeat(${tier.boxes}, 1fr)` }}>
+              <ul className="partners__grid" style={{ gridTemplateColumns: `repeat(${tier.boxes}, minmax(0, 1fr))` }}>
                 {Array.from({ length: tier.boxes }, (_, i) => (
-                  <li key={i} className="partners__box">
-                    <span className="partners__label">Partner logo</span>
+                  <li key={i} className={`partners__box${tier.logos?.[i] ? ' partners__box--logo' : ''}`}>
+                    {tier.logos?.[i] ? (
+                      <img src={`/${tier.logos[i]}`} alt="Gold partner" />
+                    ) : (
+                      <span className="partners__label">Partner logo</span>
+                    )}
                   </li>
                 ))}
               </ul>

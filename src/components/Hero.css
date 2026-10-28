@@ -53,6 +53,8 @@
   top: 24.5%;
   font-size: 7.4vw;
   color: #fff;
+  -webkit-text-stroke: 0.035em #1c1540; /* dark outline, like the date and venue text in the corners */
+  paint-order: stroke fill;
 }
 
 .hero__line--ready {
@@ -75,6 +77,8 @@
   z-index: 3; /* in front of the characters, as in the reference */
   font-size: 6.7vw;
   color: #fff;
+  -webkit-text-stroke: 0.035em #1c1540;
+  paint-order: stroke fill;
 }
 
 .hero__chars {
